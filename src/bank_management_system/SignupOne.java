@@ -6,14 +6,14 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.Random;
 
-public class signup extends JFrame implements  ActionListener {
+public class SignupOne extends JFrame implements  ActionListener {
     long random;
     JTextField nametext, fnametext, emailtext, addresstext, citytext, statetext, pincodetext;
     JButton next;
     JRadioButton male, female, married, unmarried, other;
     JDateChooser dateChooser;
 
-    signup() {
+    SignupOne() {
         setLayout(null);
         Random ran = new Random();
         long random = Math.abs((ran.nextLong() % 900L) + 1000L);
@@ -219,9 +219,12 @@ public class signup extends JFrame implements  ActionListener {
             if (name.equals("")) {
                 JOptionPane.showMessageDialog(null, "Name is Required");
             }else {
-                conn c1 = new conn();
+                Conn c = new Conn();
                 String query = "insert into signup values('" + formno + "','" + name + "','" + fname + "','" + DOB + "','" + gender + "','" + email + "','" + marital + "','" + address + "','" + city + "','" + state + "','" + pincode + "')";
-            c1.s.executeUpdate(query);
+                System.out.print(query);
+                c.s1.executeUpdate(query);
+                setVisible(false);
+                new SignupTwo(formno).setVisible(true);
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -231,7 +234,7 @@ public class signup extends JFrame implements  ActionListener {
 
 
     public static void main(String[] args) {
-        new signup();
+        new SignupOne();
 
     }
 }
