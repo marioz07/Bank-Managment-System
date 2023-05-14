@@ -16,7 +16,7 @@ public class SignupOne extends JFrame implements  ActionListener {
     SignupOne() {
         setLayout(null);
         Random ran = new Random();
-        long random = Math.abs((ran.nextLong() % 900L) + 1000L);
+        random = Math.abs((ran.nextLong() % 900L) + 1000L);
 
         // Heading
         JLabel formno = new JLabel("APLLICATION FORM NO." + random);
@@ -220,7 +220,7 @@ public class SignupOne extends JFrame implements  ActionListener {
                 JOptionPane.showMessageDialog(null, "Name is Required");
             }else {
                 Conn c = new Conn();
-                String query = "insert into signup values('" + formno + "','" + name + "','" + fname + "','" + DOB + "','" + gender + "','" + email + "','" + marital + "','" + address + "','" + city + "','" + state + "','" + pincode + "')";
+                String query = "insert into signup values('"+formno+"','" + name + "','" + fname + "','" + DOB + "','" + gender + "','" + email + "','" + marital + "','" + address + "','" + city + "','" + state + "','" + pincode + "')";
                 System.out.print(query);
                 c.s1.executeUpdate(query);
                 setVisible(false);
