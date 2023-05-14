@@ -3,6 +3,7 @@ package bank_management_system;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.ResultSet;
 
 
 public class Login extends JFrame implements ActionListener {
@@ -24,6 +25,7 @@ public class Login extends JFrame implements ActionListener {
         JLabel text = new JLabel("Welcome To Bank");
         text.setFont(new Font("Osward", Font.BOLD, 32));
         text.setBounds(200, 40, 300, 40);
+
         add(text);
 
         //card no
@@ -72,7 +74,24 @@ public class Login extends JFrame implements ActionListener {
     }
         public void actionPerformed(ActionEvent ae){
             if (ae.getSource() == login){
+                Conn conn = new Conn();
+                String cardnumber = cardtext.getText();
+                String pinnumber = pintext.getText();
+                String query = "select * from login where cardnumber = '"+cardnumber+"' and pin = '"+pinnumber+"'";
 
+                try {
+                    ResultSet rs = conn.s1.executeQuery(query);
+                    if (rs.next()){
+                        setVisible(false);
+                        new Transaction(pinnumber).setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null,"Incorrect card no.");
+                        cardtext.setText("");
+                        pintext.setText("");
+                    }
+                } catch (Exception e){
+                    System.out.print(e);
+                }
             }
             else if(ae.getSource() == signup){
                 setVisible(false);
