@@ -75,31 +75,29 @@ public class PinChange extends JFrame implements ActionListener {
             try{
 
                 String npin = pintext.getText();
-                System.out.print(npin);
+
 
                 String rpin = retext.getText();
-                System.out.print(rpin);
-//                if (!npin.equals(rpin)){
-//                    JOptionPane.showMessageDialog(null,"Entered pin Does not match");
-//                    return;
-//                }
-//                if (!npin.equals("")) {
-//                    JOptionPane.showMessageDialog(null, "please Enter a pin ");
-//                    return;
-//                }
-//                if (!rpin.equals("")) {
-//                    JOptionPane.showMessageDialog(null, "please re-Enter a pin ");
-//                    return;
-//                }
-                System.out.print("ok");
+
+                if (!npin.equals(rpin)){
+                    JOptionPane.showMessageDialog(null,"Entered pin Does not match");
+                    return;
+                }
+                if (!npin.equals("")) {
+                    JOptionPane.showMessageDialog(null, "please Enter a pin ");
+                    return;
+                }
+                if (!rpin.equals("")) {
+                    JOptionPane.showMessageDialog(null, "please re-Enter a pin ");
+                    return;
+                }
+
 
                 Conn conn = new Conn();
                 String query = "update bank set pin = '"+rpin+"' where pin='"+pinnumber+"'";
                 String query2 = "update login set pin = '"+rpin+"' where pin = '"+pinnumber+"'";
                 String query3 = "update signupthree set pinnumber = '"+rpin+"' where pinnumber = '"+pinnumber+"'";
-                System.out.print(query);
-                System.out.print(query2);
-                System.out.print(query3);
+
                 conn.s1.executeUpdate(query);
                 conn.s1.executeUpdate(query2);
                 conn.s1.executeUpdate(query3);
