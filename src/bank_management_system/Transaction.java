@@ -21,8 +21,8 @@ public class Transaction extends JFrame implements ActionListener {
 
         JLabel text = new JLabel("Please select your Transaction");
         text.setFont(new Font("Raleway", Font.BOLD, 24));
-        text.setForeground(Color.BLACK);
-        text.setBounds(300,200,400, 28);
+        text.setForeground(Color.WHITE);
+        text.setBounds(270,200,400, 28);
         image.add(text);
 
         deposit = new JButton("Deposit");
@@ -85,6 +85,18 @@ public class Transaction extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent ae) {
         if (ae.getSource() == exit){
             System.exit(0);
+        } else if (ae.getSource() == deposit) {
+            setVisible(false);
+            new deposit(pinnumber).setVisible(true);
+        } else if (ae.getSource() == withdraw) {
+            setVisible(false);
+            new withdrawl(pinnumber).setVisible(true);
+        } else if (ae.getSource() == fast) {
+            setVisible(false);
+            new FastCash(pinnumber).setVisible(true);
+        } else if (ae.getSource() == pin) {
+            setVisible(false);
+            new PinChange(pinnumber).setVisible(true);
         }
 
     }
