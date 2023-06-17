@@ -1,0 +1,13 @@
+Run the following querys in your mysql Workbench
+
+
+create database bankmanagementsystem;
+
+use bankmanagementsystem;
+
+create table signup(formno varchar(20),name varchar(30),father_name varchar(20), dob varchar(20), gender varchar(20), email varchar(30), marital varchar(20), address varchar(50), city varchar(20) ,state varchar(20), pincode varchar(20));
+create table signuptwo(formno varchar(20), religion varchar(30),caste varchar(10),income varchar(20),education varchar(30),occupation varchar(30), adhar varchar(40), pan varchar(30), seniorcitizen varchar(10), existingAccount varchar(10));
+create table signupthree(formno varchar(20),account varchar(40),cardnumber varchar(25), pinnumber varchar(15), services varchar(100) );
+create table login(formno varchar(20), cardnumber varchar(25), pin varchar(10));
+
+create table bank(pin varchar(20),date varchar(50), type varchar(20), amount varchar(20) );
